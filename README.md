@@ -50,3 +50,5 @@ View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+[![Stories in Ready](https://badge.waffle.io/teamartemis/teamartemis.png?label=ready&title=Ready)](http://waffle.io/teamartemis/teamartemis)
