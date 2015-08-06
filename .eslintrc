@@ -17,10 +17,10 @@ rules:
     - 2
   space-after-keywords:
     - 2
-    - never
+    - always
   space-before-blocks:
     - 2
-    - never
+    - always
   space-in-parens:
     - 2
     - never
@@ -37,4 +37,7 @@ rules:
 env:
   node: true
   browser: true
+globals:
+  angular: true
+
 extends: 'eslint:recommended'
