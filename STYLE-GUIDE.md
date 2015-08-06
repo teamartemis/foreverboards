@@ -202,17 +202,15 @@ When writing any block of code that is logically subordinate to the line immedia
 * You may use it as padding for visual clarity. If you do though, make sure it's balanced on both sides.
 
     ```javascript
-    // optional:
-    alert( "I chose to put visual padding around this string" );
-
     // bad:
+    alert( "I chose to put visual padding around this string" );
     alert( "I only put visual padding on one side of this string");
     ```
 
 * You may use it to align two similar lines, but it is not recommended. This pattern usually leads to unnecessary edits of many lines in your code every time you change a variable name.
 
     ```javascript
-    // discouraged:
+    // bad:
     var firstItem  = getFirst ();
     var secondItem = getSecond();
     ```
@@ -240,22 +238,8 @@ When writing any block of code that is logically subordinate to the line immedia
 ### Working with files
 
 * Do not end a file with any character other than a newline.
-* Don't use the -a or -m flags for `git commit` for the first half of the class, since they conceal what is actually happening (and do slightly different things than most people expect).
-
-    ```shell
-    # good:
-    > git add .
-    > git commit
-    [save edits to the commit message file using the text editor that opens]
-
-    # bad:
-    > git commit -a
-    [save edits to the commit message file using the text editor that opens]
-
-    # bad:
-    > git add .
-    > git commit -m "updated algorithm"
-    ```
+* Always end lines with \n and never with \r\n.
+* See http://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/ for more details.
 
 
 ### Opening or closing too many blocks at once
@@ -282,7 +266,7 @@ When writing any block of code that is logically subordinate to the line immedia
 * Use a new var statement for each line you declare a variable on.
 * Do not break variable declarations onto mutiple lines.
 * Use a new line for each variable declaration.
-* See http://benalman.com/news/2012/05/multiple-var-statements-javascript/ for more details
+* See http://benalman.com/news/2012/05/multiple-var-statements-javascript/ for more details.
 
     ```javascript
     // good:
@@ -338,8 +322,6 @@ When writing any block of code that is logically subordinate to the line immedia
     ];
     ```
 
-* Avoid use of `switch` statements altogether. They are hard to outdent using the standard whitespace rules above, and are prone to error due to missing `break` statements. See [this article](http://ericleads.com/2012/12/switch-case-considered-harmful/) for more detail.
-
 * Prefer single quotes around JavaScript strings, rather than double quotes. Having a standard of any sort is preferable to a mix-and-match approach, and single quotes allow for easy embedding of HTML, which prefers double quotes around tag attributes.
 
     ```javascript
@@ -347,12 +329,8 @@ When writing any block of code that is logically subordinate to the line immedia
     var dog = 'dog';
     var cat = 'cat';
 
-    // acceptable:
-    var dog = "dog";
-    var cat = "cat";
-
     // bad:
-    var dog = 'dog';
+    var dog = "dog";
     var cat = "cat";
     ```
 
