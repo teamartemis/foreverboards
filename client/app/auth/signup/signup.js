@@ -11,6 +11,6 @@ angular.module('artemis.auth.signup', [])
     })
     .catch(function() {
 
-    })
-  }
-})
+    });
+  };
+});

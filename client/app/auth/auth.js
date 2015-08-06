@@ -5,4 +5,4 @@ angular.module('artemis.auth', [
 
 .controller('AuthController', function($scope, $window) {
 
-})
+});

@@ -18,6 +18,6 @@ angular.module('artemis.services', [])
 
   var signout = function() {
 
-  }
+  };
 
-})
+});
