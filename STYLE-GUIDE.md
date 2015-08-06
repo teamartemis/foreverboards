@@ -8,12 +8,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
         ```javascript
         // good:
-        if(condition){
+        if (condition) {
           action();
         }
 
         // bad:
-        if(condition){
+        if (condition) {
         action();
         }
         ```
@@ -21,12 +21,12 @@ When writing any block of code that is logically subordinate to the line immedia
     * When a line closes a block, that line starts at the same level as the line that opened the block
         ```javascript
         // good:
-        if(condition){
+        if (condition) {
           action();
         }
 
         // bad:
-        if(condition){
+        if (condition) {
           action();
           }
         ```
@@ -37,7 +37,7 @@ When writing any block of code that is logically subordinate to the line immedia
         // bad:
         transmogrify({
           a: {
-            b: function(){
+            b: function() {
             }
         }});
         ```
@@ -88,13 +88,13 @@ When writing any block of code that is logically subordinate to the line immedia
   ```javascript
   // good:
   var list = ['a', 'b', 'c']
-  for(var i = 0; i < list.length; i++){
+  for (var i = 0; i < list.length; i++) {
     alert(list[i]);
   }
 
   // bad:
   var list = ['a', 'b', 'c']
-  for(var i in list){
+  for (var i in list) {
     alert(list[i]);
   }
   ```
@@ -102,12 +102,12 @@ When writing any block of code that is logically subordinate to the line immedia
 * Never omit braces for statement blocks (although they are technically optional).
     ```javascript
     // good:
-    for(key in object){
+    for (key in object) {
       alert(key);
     }
 
     // bad:
-    for(key in object)
+    for (key in object)
       alert(key);
     ```
 
@@ -117,14 +117,14 @@ When writing any block of code that is logically subordinate to the line immedia
     // good:
 
     // this comparison evaluates to false, because the number zero is not the same as the empty string.
-    if(0 === ''){
+    if (0 === '') {
       alert('looks like they\'re equal');
     }
 
     // bad:
 
     // This comparison evaluates to true, because after type coercion, zero and the empty string are equal.
-    if(0 == ''){
+    if (0 == '') {
       alert('looks like they\'re equal');
     }
     ```
@@ -133,10 +133,10 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // good:
-    var go = function(){...};
+    var go = function() {...};
 
     // bad:
-    function stop(){...};
+    function stop() {...};
     ```
 
 
@@ -157,12 +157,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
   ```javascript
   // good:
-  if(condition){
+  if (condition) {
     response();
   }
 
   // bad:
-  if(condition){
+  if (condition) {
     response();
   };
   ```
@@ -171,12 +171,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
   ```javascript
   // good:
-  var greet = function(){
+  var greet = function() {
     alert('hi');
   };
 
   // bad:
-  var greet = function(){
+  var greet = function() {
     alert('hi');
   }
   ```
@@ -218,17 +218,17 @@ When writing any block of code that is logically subordinate to the line immedia
 * Put `else` and `else if` statements on the same line as the ending curly brace for the preceding `if` block
     ```javascript
     // good:
-    if(condition){
+    if (condition) {
       response();
-    }else{
+    } else {
       otherResponse();
     }
 
     // bad:
-    if(condition){
+    if (condition) {
       response();
     }
-    else{
+    else {
       otherResponse();
     }
     ```
@@ -248,13 +248,13 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // avoid:
-    _.ajax(url, {success: function(){
+    _.ajax(url, {success: function() {
       // ...
     }});
 
     // prefer:
     _.ajax(url, {
-      success: function(){
+      success: function() {
         // ...
       }
     });
@@ -294,12 +294,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // good:
-    var overwriteNumber = function(){
+    var overwriteNumber = function() {
       window.exported = Math.random();
     };
 
     // bad:
-    var overwriteNumber = function(){
+    var overwriteNumber = function() {
       exported = Math.random();
     };
     ```
