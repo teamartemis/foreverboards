@@ -9,5 +9,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-eslint');
 
+  grunt.registerTask('test', ['eslint']);
   grunt.registerTask('default', ['eslint']);
 };

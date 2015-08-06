@@ -5,6 +5,9 @@
   "main": "server/server.js",
   "author": "",
   "license": "MIT",
+  "scripts": {
+    "test": "grunt test"
+  },
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
