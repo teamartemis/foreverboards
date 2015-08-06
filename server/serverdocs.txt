@@ -1,0 +1,36 @@
+Parse Server Keys:
+ApplicationID: 9oSMpCeMJYGTeXIxmfYwxgQR7EKS47Q7Ayuv0vwb
+ClientID: MF7gCQQB7PHKY2YgrlLa6G24CqpuOR2n4sPeYTDX
+
+End points:
+/classes/User
+/classes/Post
+/classes/Board
+
+Schemas (All JSON):
+User
+  -objectID (PK, INT, provided by Parse. Even though it is mongo on the backend, the Parse interface allows for relational data)
+  -username (String)
+  -password (String)
+  -authData (authData, provided by Parse)
+  -emailVerified (Boolean, also provided by Parse)
+  -email (String)
+  -createdAt (Date, provided by Parse)
+  -updatedAt (Date, provided by Parse)
+  -ACL (Access control list, provided by Parse)
+
+Board
+  -objectID (PK, INT, provided by Parse. Even though it is mongo on the backend, the Parse interface allows for relational data)
+  -deceasedName (String)
+  -createdAt (Date, provided by Parse)
+  -updatedAt (Date, provided by Parse)
+  -ACL (Access control list, provided by Parse)
+
+Post
+  -objectID (PK, INT, provided by Parse. Even though it is mongo on the backend, the Parse interface allows for relational data)
+  -boardID (Pointer to a specific Board instance in the Board table, set to the objectID of the Board)
+  -content (String)
+  -userID (Pointer to a specific User instance in the User table, set to the objectID of the User)
+  -createdAt (Date, provided by Parse)
+  -updatedAt (Date, provided by Parse)
+  -ACL (Access control list, provided by Parse)
