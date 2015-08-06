@@ -1,0 +1,40 @@
+rules:
+  indent:
+    - 2
+    - 2
+  quotes:
+    - 2
+    - single
+  linebreak-style:
+    - 2
+    - unix
+  eol-last:
+    - 2
+  semi:
+    - 2
+    - always
+  no-trailing-spaces:
+    - 2
+  space-after-keywords:
+    - 2
+    - never
+  space-before-blocks:
+    - 2
+    - never
+  space-in-parens:
+    - 2
+    - never
+  curly:
+    - 2
+    - all
+  no-console:
+    - 1
+  no-unused-vars:
+    - 1
+    -
+      vars: all
+      args: none
+env:
+  node: true
+  browser: true
+extends: 'eslint:recommended'
