@@ -1,9 +1,0 @@
-<button ng-click="create()" ng-show="isState('menu')">Create new board</button>
-<div ui-view></div>
-
-<div class="container">
-  <div class="board" ng-repeat="board in boards | orderBy:'-createdAt'">
-    <img src="http://www.kabwemunicipality.org/wp-content/uploads/2015/05/placeholder.jpg"/>
-    <a href="{{ board.url }}" class="title">{{ board.deceasedName }}</a>
-  </div>
-</div>

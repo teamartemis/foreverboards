@@ -10,7 +10,7 @@ angular.module('artemis.menu.create', [
   $scope.create = function() {
     // --- testing
     console.log('Board created. Back to menu');
-    $state.go('menu');
+    $state.go('^');
 
     // --- dev
     // var params = {
@@ -19,11 +19,11 @@ angular.module('artemis.menu.create', [
     //   guests: [users], // TODO
     // };
     // Boards.createBoard(params).then(function(board) {
-    //   $state.go('menu');
+    //   $state.go('^');
     // });
   };
 
   $scope.cancel = function() {
-    $state.go('menu');
+    $state.go('^');
   };
 });
