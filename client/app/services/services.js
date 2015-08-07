@@ -5,7 +5,13 @@ angular.module('artemis.services', [])
 })
 .factory('Users', function($http) {
   var signin = function(user) {
+    return $http.get('https://api.parse.com/1/login', {params: user})
+    .success(function(res) {
+      console.log('Login success!');
+    })
+    .error(function(res) {
 
+    });
   };
 
   var signup = function(user) {
