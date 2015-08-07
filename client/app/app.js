@@ -1,5 +1,6 @@
 angular.module('artemis', [
   'artemis.auth',
+  'artemis.menu',
   'artemis.services',
   'ui.router'
 ])
@@ -9,8 +10,13 @@ angular.module('artemis', [
   $stateProvider
     .state('menu', {
       url: '/menu',
-      templateUrl: '',
+      templateUrl: 'app/menu/menu.html',
       controller: 'MenuController'
+    })
+    .state('menu.create', {
+      url: '/create',
+      templateUrl: 'app/menu/create/create.html',
+      controller: 'CreateController'
     })
     .state('board', {
       url: '/board',
