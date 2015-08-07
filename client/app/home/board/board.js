@@ -13,7 +13,7 @@ angular.module('artemis.board', [
   };
 
   $scope.getPosts = function() {
-    Posts.getPosts($sope.id).then(function(data) {
+    Posts.getPosts($scope.id).then(function(data) {
       // do something with the posts
     });
   };
