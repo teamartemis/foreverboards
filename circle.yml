@@ -1,0 +1,17 @@
+machine:
+  node:
+    version: 0.12.7
+  services:
+    - docker
+test:
+  pre:
+    - npm install -g gulp
+deployment:
+  master:
+    branch: master
+    owner: circleci
+    commands:
+      - gulp build
+      - docker build -t teamartemis/artemis .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push teamartemis/artemis
