@@ -1,7 +1,14 @@
 angular.module('artemis.services', [])
 
 .factory('Posts', function($http) {
+  var getPosts = function(id) {
+    // id = boardId
+    // return all posts for this board
+  };
 
+  return {
+    getPosts: getPosts
+  };
 })
 .factory('Users', function($http) {
   var signin = function(user) {
@@ -29,7 +36,8 @@ angular.module('artemis.services', [])
   };
 
   var signout = function() {
-
+    // remove anything that should be removed from local storage
+    // transition user to sign in page
   };
 
   return {
@@ -40,6 +48,15 @@ angular.module('artemis.services', [])
   };
 })
 .factory('Boards', function($http) {
+  var getBoard = function(id) {
+    // id = boardId
+    // return any necessary details for this board
+    // Ex:
+      // name of deceased
+      // picture
+      // description
+  };
+
   var getBoards = function(user) {
     // user = { username, password }
     // get boards that are owned/administered by the user
@@ -55,6 +72,7 @@ angular.module('artemis.services', [])
   };
 
   return {
+    getBoard: getBoard,
     getBoards: getBoards,
     createBoard: createBoard,
     checkAccess: checkAccess

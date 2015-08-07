@@ -1,6 +1,6 @@
 angular.module('artemis', [
   'artemis.auth',
-  'artemis.menu',
+  'artemis.home',
   'artemis.services',
   'ui.router'
 ])
@@ -8,19 +8,23 @@ angular.module('artemis', [
   $urlRouterProvider.otherwise('/auth/signin');
 
   $stateProvider
-    .state('menu', {
+    .state('home', {
+      templateUrl: 'app/home/home.html',
+      controller: 'HomeController'
+    })
+    .state('home.menu', {
       url: '/menu',
-      templateUrl: 'app/menu/menu.html',
+      templateUrl: 'app/home/menu/menu.html',
       controller: 'MenuController'
     })
-    .state('menu.create', {
+    .state('home.menu.create', {
       url: '/create',
-      templateUrl: 'app/menu/create/create.html',
+      templateUrl: 'app/home/menu/create/create.html',
       controller: 'CreateController'
     })
-    .state('board', {
-      url: '/board',
-      templateUrl: '',
+    .state('home.board', {
+      url: '/board/:id',
+      templateUrl: 'app/home/board/board.html',
       controller: 'BoardController'
     })
     .state('auth', {
