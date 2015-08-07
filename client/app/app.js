@@ -52,7 +52,9 @@ angular.module('artemis', [
       // if (jwt) {
       //   object.headers['x-access-token'] = jwt;
       // }
-      object.headers['Allow-Control-Allow-Origin'] = '*';
+      //object.headers['Allow-Control-Allow-Origin'] = '*';
+      object.headers['X-Parse-Application-Id'] = '9oSMpCeMJYGTeXIxmfYwxgQR7EKS47Q7Ayuv0vwb';
+      object.headers['X-Parse-REST-API-Key'] = 'Ejpf8BZDwyiT0Hg902yZ8cffJimRJ6VhQAmC6sCh';
       return object;
     }
   };
