@@ -9,7 +9,9 @@ var cheerio = require('gulp-cheerio');
 var nodemon = require('gulp-nodemon');
 var eslint = require('gulp-eslint');
 var angularTemplates = require('gulp-angular-templates');
+var browserSync = require('browser-sync');
 var pjson = require('./package.json');
+var reload = browserSync.reload;
 
 gulp.task('bower', function() {
   return bower({ cmd: 'update'});
@@ -65,11 +67,25 @@ gulp.task('lint', function() {
 
 gulp.task('test', ['lint']);
 
-gulp.task('watch', function() {
+gulp.task('watch:server', function() {
   nodemon({
     script: pjson.main,
-    ext: 'js html'
+    ext: 'js'
   });
 });
+
+gulp.task('watch:client', function() {
+  browserSync({
+    server: {
+      baseDir: 'client'
+    }
+  });
+
+  gulp.watch(['client/**/*.html', 'client/**/*.css', 'client/**/*.js'], reload);
+});
+
+// since we're using parse api at the moment we don't need to
+// run our server
+gulp.task('watch', ['watch:client']);
 
 gulp.task('default', ['watch']);

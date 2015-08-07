@@ -14,6 +14,7 @@
     "express": "^4.4.5"
   },
   "devDependencies": {
+    "browser-sync": "^2.8.2",
     "eslint": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-angular-templates": "0.0.2",
