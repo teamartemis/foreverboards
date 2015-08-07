@@ -9,7 +9,13 @@ angular.module('artemis.services', [])
   };
 
   var signup = function(user) {
+    return $http.post('https://api.parse.com/1/classes/_User', user)
+    .success(function(res) {
+      console.log('services post successful');
+    })
+    .error(function(res) {
 
+    });
   };
 
   var isAuth = function() {
