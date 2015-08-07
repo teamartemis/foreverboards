@@ -7,10 +7,10 @@ angular.module('artemis.auth.signin', [])
       password: $scope.password
     })
     .then(function() {
-
+      console.log('Promise received.');
     })
-    .catch(function() {
-
+    .catch(function(err) {
+      console.error(err);
     });
   };
 });
