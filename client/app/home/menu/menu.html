@@ -2,7 +2,7 @@
 <div ui-view></div>
 
 <div class="container">
-  <div ui-sref="home.board({id: board.id})" class="board" ng-repeat="board in boards | orderBy:'-createdAt'">
+  <div ui-sref="home.board({id: board.objectId})" class="board" ng-repeat="board in boards | orderBy:'-createdAt'">
     <img src="http://www.kabwemunicipality.org/wp-content/uploads/2015/05/placeholder.jpg"/>
     <span class="title">{{ board.deceasedName }}</span>
   </div>
