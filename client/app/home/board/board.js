@@ -2,23 +2,22 @@ angular.module('artemis.board', [
 ])
 
 .controller('BoardController', function($scope, $stateParams, $state, Boards, Posts) {
-  $scope.id = $stateParams.id;
+  $scope.boardId = $stateParams.id;
   $scope.$stateParams = $stateParams;
   $scope.$state = $state;
 
   $scope.getBoard = function() {
-    Boards.getBoard($scope.id).then(function(data) {
-      // do something with the info
+    Boards.getBoard($scope.boardId).then(function(res) {
+      $state.board = res.data.results;
     });
   };
 
   $scope.getPosts = function() {
-    Posts.getPosts($scope.id).then(function(data) {
-      // do something with the posts
+    Posts.getPosts($scope.boardId).then(function(res) {
+      $state.posts = res.data.results;
     });
   };
 
-  // NOTE: uncomment once Boards.getBoard and Posts.getPosts are implemented
-  // $scope.getBoard();
-  // $scope.getPosts();
+  $scope.getBoard();
+  $scope.getPosts();
 });
