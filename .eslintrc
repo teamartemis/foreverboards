@@ -28,7 +28,7 @@ rules:
     - 2
     - all
   no-console:
-    - 1
+    - 0
   no-unused-vars:
     - 1
     -
