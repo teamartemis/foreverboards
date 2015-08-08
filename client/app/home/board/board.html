@@ -1,2 +1,5 @@
 <h2>state params:</h2>
 <pre>{{ $stateParams | json }}</pre>
+<pre>{{ posts | json }}</pre>
+
+<post source="post" ng-repeat="post in posts | orderBy: '-createdAt'"></post>

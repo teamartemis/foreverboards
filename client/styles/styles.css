@@ -12,3 +12,8 @@
 .board .title {
   display: inline-block;
 }
+
+.post {
+  display: inline-block;
+  margin: 20px;
+}
