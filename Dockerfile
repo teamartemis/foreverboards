@@ -17,12 +17,15 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && npm cache clear
 
 WORKDIR /app
+
 ENV NODE_ENV production
+ENV PORT 80
+
 ADD package.json package.json
 RUN npm install --production
 
 ADD dist dist
 ADD server server
 
-EXPOSE 4568
+EXPOSE 80
 CMD ["npm", "start"]
