@@ -8,13 +8,13 @@ angular.module('artemis.board', [
 
   $scope.getBoard = function() {
     Boards.getBoard($scope.boardId).then(function(res) {
-      $state.board = res.data.results;
+      $scope.board = res.data.results;
     });
   };
 
   $scope.getPosts = function() {
     Posts.getPosts($scope.boardId).then(function(res) {
-      $state.posts = res.data.results;
+      $scope.posts = res.data.results;
     });
   };
 
