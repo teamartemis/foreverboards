@@ -51,9 +51,6 @@ angular.module('artemis.services', [])
 
   var createBoard = function(data) {
     return $http.post('https://api.parse.com/1/classes/Board', data)
-      .success(function(res) {
-        console.log(res);
-      })
       .error(function(err) {
         console.error(err);
       });

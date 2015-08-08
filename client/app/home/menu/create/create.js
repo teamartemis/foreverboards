@@ -8,19 +8,14 @@ angular.module('artemis.menu.create', [
   };
 
   $scope.create = function() {
-    // --- testing
-    console.log('Board created. Back to menu');
-    $state.go('^');
-
-    // --- dev
-    // var params = {
-    //   deceasedName: $scope.deceasedName,
+    var params = {
+      deceasedName: $scope.deceasedName
     //   creator: user, // TODO
     //   guests: [users], // TODO
-    // };
-    // Boards.createBoard(params).then(function(board) {
-    //   $state.go('^');
-    // });
+    };
+    Boards.createBoard(params).then(function(res) {
+      $state.go('home.board', {id: res.data.objectId});
+    });
   };
 
   $scope.cancel = function() {
