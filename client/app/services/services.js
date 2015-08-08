@@ -1,34 +1,18 @@
 angular.module('artemis.services', [])
 
-.factory('Posts', function($http) {
-  var getPosts = function(id) {
-    // id = boardId
-    // return all posts for this board
-  };
-
-  return {
-    getPosts: getPosts
-  };
-})
 .factory('Users', function($http) {
   var signin = function(user) {
     return $http.get('https://api.parse.com/1/login', {params: user})
-    .success(function(res) {
-      console.log('Login success!');
-    })
-    .error(function(res) {
-
-    });
+      .error(function(err) {
+        console.error(err);
+      });
   };
 
   var signup = function(user) {
     return $http.post('https://api.parse.com/1/classes/_User', user)
-    .success(function(res) {
-      console.log('services post successful');
-    })
-    .error(function(res) {
-
-    });
+      .error(function(err) {
+        console.error(err);
+      });
   };
 
   var isAuth = function() {
@@ -47,23 +31,32 @@ angular.module('artemis.services', [])
     signout: signout
   };
 })
+
 .factory('Boards', function($http) {
   var getBoard = function(id) {
-    // id = boardId
-    // return any necessary details for this board
-    // Ex:
-      // name of deceased
-      // picture
-      // description
+    return $http.get('https://api.parse.com/1/classes/Board', {where: {objectId: id}})
+      .error(function(err) {
+        console.log(err);
+      });
   };
 
   var getBoards = function(user) {
     // user = { username, password }
-    // get boards that are owned/administered by the user
+    // TODO: get boards that are owned/administered by the user
+    return $http.get('https://api.parse.com/1/classes/Board')
+      .error(function(err) {
+        console.error(err);
+      });
   };
 
   var createBoard = function(data) {
-    // create board
+    return $http.post('https://api.parse.com/1/classes/Board', data)
+      .success(function(res) {
+        console.log(res);
+      })
+      .error(function(err) {
+        console.error(err);
+      });
   };
 
   var checkAccess = function(user, board) {
@@ -76,5 +69,18 @@ angular.module('artemis.services', [])
     getBoards: getBoards,
     createBoard: createBoard,
     checkAccess: checkAccess
+  };
+})
+
+.factory('Posts', function($http) {
+  var getPosts = function(boardId) {
+    return $http.get('https://api.parse.com/1/classes/Post', {where: {boardId: boardId}})
+      .error(function(err) {
+        console.error(err);
+      });
+  };
+
+  return {
+    getPosts: getPosts
   };
 });
