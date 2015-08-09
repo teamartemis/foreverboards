@@ -71,7 +71,17 @@ angular.module('artemis.services', [])
 
 .factory('Posts', function($http) {
   var getPosts = function(boardId) {
-    return $http.get('https://api.parse.com/1/classes/Post', {where: {boardId: boardId}})
+    return $http.get('https://api.parse.com/1/classes/Post', {
+      params: {
+        where: {
+          boardId: {
+            className: 'Board',
+            '__type': 'Pointer',
+            objectId: boardId
+          }
+        }
+      }
+    })
       .error(function(err) {
         console.error(err);
       });
