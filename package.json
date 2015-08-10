@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "body-parser": "^1.4.3",
-    "express": "^4.4.5"
+    "cors": "^2.7.1",
+    "express": "^4.4.5",
+    "multer": "^1.0.3"
   },
   "devDependencies": {
     "browser-sync": "^2.8.2",
