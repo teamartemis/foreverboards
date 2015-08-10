@@ -4,7 +4,8 @@
   "dependencies": {
     "angular": "~1.4.3",
     "angular-ui-router": "~0.2.15",
-    "angular-cookies": "~1.4.3"
+    "angular-cookies": "~1.4.3",
+    "ng-file-upload": "~6.0.4"
   },
   "ignore": [
     "**/.*",
