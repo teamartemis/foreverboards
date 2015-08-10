@@ -8,6 +8,11 @@ angular.module('artemis.menu.create', [
   };
 
   $scope.create = function() {
+    if (!$scope.deceasedName) {
+      // TODO: display error message
+      return console.log('Cannot create board with empty name');
+    }
+
     var params = {
       deceasedName: $scope.deceasedName
     //   creator: user, // TODO
