@@ -6,10 +6,10 @@ angular.module('artemis.auth.signin', [])
       username: $scope.username,
       password: $scope.password
     })
-    .then(function() {
-      $state.go('home.menu');
+    .success(function() {
+      $state.go('menu');
     })
-    .catch(function(err) {
+    .error(function(err) {
       console.error(err);
     });
   };
