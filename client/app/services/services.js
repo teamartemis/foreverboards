@@ -23,6 +23,10 @@ angular.module('artemis.services', ['ngCookies'])
     return !!$cookies.get('sessionToken');
   };
 
+  var getSessionToken = function() {
+    return $cookies.get('sessionToken');
+  };
+
   var signout = function() {
     // remove anything that should be removed from local storage
     // transition user to sign in page
@@ -32,7 +36,8 @@ angular.module('artemis.services', ['ngCookies'])
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
+    getSessionToken: getSessionToken
   };
 })
 
@@ -44,12 +49,20 @@ angular.module('artemis.services', ['ngCookies'])
       });
   };
 
-  var getBoards = function(user) {
+  var getBoards = function(token, user) {
     // user = { username, password }
     // TODO: get boards that are owned/administered by the user
-    return $http.get('https://api.parse.com/1/classes/Board')
+    var req = {
+      method: 'GET',
+      url: 'https://api.parse.com/1/classes/Board',
+      headers: {
+        'X-Parse-Session-Token': token
+      }
+    };
+    return $http(req)
       .error(function(err) {
-        console.error(err);
+        //TODO: error handling
+        console.log(err);
       });
   };
 
