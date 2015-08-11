@@ -70,22 +70,22 @@ gulp.task('test', ['lint']);
 gulp.task('watch:server', function() {
   nodemon({
     script: pjson.main,
-    ext: 'js'
+    watch: 'server/**/*.js'
+  }).on('restart', function() {
+    setTimeout(reload, 500);
   });
 });
 
 gulp.task('watch:client', function() {
   browserSync({
-    server: {
-      baseDir: 'client'
+    proxy: {
+      target: 'localhost:4568'
     }
   });
 
   gulp.watch(['client/**/*.html', 'client/**/*.css', 'client/**/*.js'], reload);
 });
 
-// since we're using parse api at the moment we don't need to
-// run our server
-gulp.task('watch', ['watch:client']);
+gulp.task('watch', ['watch:client', 'watch:server']);
 
 gulp.task('default', ['watch']);

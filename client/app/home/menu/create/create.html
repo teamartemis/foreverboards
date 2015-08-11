@@ -1,7 +1,11 @@
-<form>
-  Name of deceased
-  <input type="text" ng-model="deceasedName" placeholder="name">
+<form ng-init="disable=true">
+  <label>Name of deceased
+    <input type="text" ng-model="deceasedName" placeholder="name">
+  </label>
+  <label>Upload headshot
+    <input type="file" ngf-select ng-model="file" accept="image/*">
+  </label>
   <button ng-click="invite()">Invite</button>
   <button ng-click="cancel()">Cancel</button>
-  <button ng-click="create()">Create</button>
+  <button ng-click="create()" ng-disabled="disable">Create</button>
 </form>
