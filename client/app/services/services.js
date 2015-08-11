@@ -30,7 +30,8 @@ angular.module('artemis.services', ['ngCookies'])
 
   var signout = function() {
     // remove anything that should be removed from local storage
-    // transition user to sign in page
+    $cookies.remove('sessionToken');
+    $cookies.remove('userId');
   };
 
   return {
