@@ -3,20 +3,21 @@ angular.module('artemis.services', ['ngCookies'])
 .factory('Users', function($http, $cookies) {
   var signin = function(user) {
     return $http.get('https://api.parse.com/1/login', {params: user})
-    .success(function(res) {
-      $cookies.put('sessionToken', res.sessionToken);
-      $cookies.put('userId', res.objectId);
-    })
-    .error(function(res) {
-
-    });
+      .then(function(res) {
+        $cookies.put('sessionToken', res.data.sessionToken);
+        $cookies.put('userId', res.data.objectId);
+      }, function(res) {
+        console.error(res.data);
+      });
   };
 
   var signup = function(user) {
     return $http.post('https://api.parse.com/1/classes/_User', user)
-      .error(function(err) {
-        console.error(err);
-      });
+    .then(function(res) {
+      //success
+    }, function(res) {
+      console.error(res.data);
+    });
   };
 
   var isAuth = function() {
@@ -44,8 +45,10 @@ angular.module('artemis.services', ['ngCookies'])
 .factory('Boards', function($http) {
   var getBoard = function(id) {
     return $http.get('https://api.parse.com/1/classes/Board', {where: {objectId: id}})
-      .error(function(err) {
-        console.log(err);
+      .then(function(res) {
+        return res;
+      }, function(res) {
+        console.error(res.data);
       });
   };
 
@@ -60,16 +63,19 @@ angular.module('artemis.services', ['ngCookies'])
       }
     };
     return $http(req)
-      .error(function(err) {
-        //TODO: error handling
-        console.log(err);
+      .then(function(res) {
+        return res;
+      }, function(res) {
+        console.error(res.data);
       });
   };
 
   var createBoard = function(data) {
     return $http.post('https://api.parse.com/1/classes/Board', data)
-      .error(function(err) {
-        console.error(err);
+    .then(function(res) {
+
+    }, function(res) {
+        console.error(res.data);
       });
   };
 
@@ -99,8 +105,10 @@ angular.module('artemis.services', ['ngCookies'])
         }
       }
     })
-      .error(function(err) {
-        console.error(err);
+      .then(function(res) {
+        return res;
+      }, function(res) {
+        console.error(res.data);
       });
   };
 
