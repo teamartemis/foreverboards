@@ -20,22 +20,3 @@ angular.module('artemis.menu', [
 
   $scope.getBoards();
 });
-
-// --- testing
-/*
-  {
-    objectId: 1,
-    deceasedName: 'Ned Stark',
-    url: 'http://www.google.com'
-  },
-  {
-    objectId: 2,
-    deceasedName: 'Tywin Lannister',
-    url: 'http://www.amazon.com'
-  },
-  {
-    objectId: 3,
-    deceasedName: 'The Hound',
-    url: 'http://www.apple.com'
-  }
-*/
