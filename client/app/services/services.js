@@ -66,7 +66,7 @@ angular.module('artemis.services', ['ngCookies'])
   var getBoard = function(id) {
     return $http.get('https://api.parse.com/1/classes/Board', {where: {objectId: id}})
       .then(function(res) {
-        return res;
+        return res.data.results;
       }, function(res) {
         console.error(res.data);
       });
@@ -84,7 +84,7 @@ angular.module('artemis.services', ['ngCookies'])
     };
     return $http(req)
       .then(function(res) {
-        return res;
+        return res.data.results;
       }, function(res) {
         console.error(res.data);
       });
@@ -126,7 +126,7 @@ angular.module('artemis.services', ['ngCookies'])
       }
     })
       .then(function(res) {
-        return res;
+        return res.data.results;
       }, function(res) {
         console.error(res.data);
       });

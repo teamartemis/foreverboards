@@ -10,8 +10,8 @@ angular.module('artemis.menu', [
 
   $scope.getBoards = function() {
     var token = Users.getSessionToken();
-    Boards.getBoards(token).then(function(res) {
-      $scope.boards = res.data.results;
+    Boards.getBoards(token).then(function(boards) {
+      $scope.boards = boards;
     });
   };
 

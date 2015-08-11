@@ -7,14 +7,14 @@ angular.module('artemis.board', [
   $scope.$state = $state;
 
   $scope.getBoard = function() {
-    Boards.getBoard($scope.boardId).then(function(res) {
-      $scope.board = res.data.results;
+    Boards.getBoard($scope.boardId).then(function(board) {
+      $scope.board = board;
     });
   };
 
   $scope.getPosts = function() {
-    Posts.getPosts($scope.boardId).then(function(res) {
-      $scope.posts = res.data.results;
+    Posts.getPosts($scope.boardId).then(function(posts) {
+      $scope.posts = posts;
     });
   };
 
