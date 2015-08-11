@@ -1,7 +1,7 @@
 angular.module('artemis.menu', [
   'artemis.menu.create'
 ])
-.controller('MenuController', function($scope, $state, Boards) {
+.controller('MenuController', function($scope, $state, Boards, Users) {
   $scope.boards = [];
 
   $scope.create = function() {
@@ -9,7 +9,8 @@ angular.module('artemis.menu', [
   };
 
   $scope.getBoards = function() {
-    Boards.getBoards().then(function(res) {
+    var token = Users.getSessionToken();
+    Boards.getBoards(token).then(function(res) {
       $scope.boards = res.data.results;
     });
   };
