@@ -7,10 +7,10 @@ angular.module('artemis.auth.signup', [])
       email: $scope.email,
       password: $scope.password
     })
-    .then(function() {
+    .success(function() {
       $state.go('auth.signin');
     })
-    .catch(function() {
+    .error(function() {
 
     });
   };

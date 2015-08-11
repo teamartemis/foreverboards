@@ -1,11 +1,15 @@
-angular.module('artemis.services', [])
+angular.module('artemis.services', ['ngCookies'])
 
-.factory('Users', function($http) {
+.factory('Users', function($http, $cookies) {
   var signin = function(user) {
     return $http.get('https://api.parse.com/1/login', {params: user})
-      .error(function(err) {
-        console.error(err);
-      });
+    .success(function(res) {
+      $cookies.put('sessionToken', res.sessionToken);
+      $cookies.put('userId', res.objectId);
+    })
+    .error(function(res) {
+
+    });
   };
 
   var signup = function(user) {
@@ -16,7 +20,7 @@ angular.module('artemis.services', [])
   };
 
   var isAuth = function() {
-
+    return !!$cookies.get('sessionToken');
   };
 
   var signout = function() {

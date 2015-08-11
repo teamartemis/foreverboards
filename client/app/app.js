@@ -63,4 +63,14 @@ angular.module('artemis', [
     }
   };
   return attach;
+})
+.run(function ($rootScope, $location, $state, Users) {
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    if (toState.name === 'auth.signup' || toState.name === 'auth.signin') {
+      //do nothing
+    } else if (!Users.isAuth()) {
+      event.preventDefault();
+      $state.go('auth.signin');
+    }
+  });
 });
