@@ -30,8 +30,27 @@ angular.module('artemis.services', ['ngCookies'])
 
   var signout = function() {
     // remove anything that should be removed from local storage
+    var token = $cookies.get('sessionToken');
     $cookies.remove('sessionToken');
     $cookies.remove('userId');
+
+    var req = {
+      method: 'POST',
+      url: 'https://api.parse.com/1/logout',
+      headers: {
+        'X-Parse-Session-Token': token
+      }
+    };
+
+    return $http(req)
+      .then(function(res) {
+        //success
+        console.log(res);
+      }, function(res) {
+        console.error(res.data);
+      });
+
+
   };
 
   return {
