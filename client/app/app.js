@@ -5,7 +5,7 @@ angular.module('artemis', [
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/auth/signin');
+  $urlRouterProvider.otherwise('/menu');
 
   $stateProvider
     .state('home', {
@@ -20,12 +20,17 @@ angular.module('artemis', [
     .state('home.menu.create', {
       url: '/create',
       templateUrl: 'app/home/menu/create/create.html',
-      controller: 'CreateController'
+      controller: 'CreateBoardController'
     })
     .state('home.board', {
       url: '/board/:id',
       templateUrl: 'app/home/board/board.html',
       controller: 'BoardController'
+    })
+    .state('home.board.create', {
+      url: '/create',
+      templateUrl: 'app/home/board/create/create.html',
+      controller: 'CreatePostController'
     })
     .state('auth', {
       url: '/auth',

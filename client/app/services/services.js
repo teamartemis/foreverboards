@@ -109,14 +109,14 @@ angular.module('artemis.services', ['ngCookies'])
   };
 })
 
-.factory('Posts', function($http) {
+.factory('Posts', function($http, $cookies) {
   var getPosts = function(boardId) {
     return $http.get('https://api.parse.com/1/classes/Post', {
       params: {
         where: {
           boardId: {
             className: 'Board',
-            '__type': 'Pointer',
+            __type: 'Pointer',
             objectId: boardId
           }
         }
@@ -129,7 +129,30 @@ angular.module('artemis.services', ['ngCookies'])
       });
   };
 
+  var createPost = function(boardId, data) {
+    var params = {
+      userId: {
+        __type: 'Pointer',
+        className: '_User', // User is a special Parse class
+        objectId: $cookies.get('userId')
+      },
+      boardId: {
+        __type: 'Pointer',
+        className: 'Board',
+        objectId: boardId
+      },
+      content: data.content,
+      photo: data.photo
+    };
+
+    return $http.post('https://api.parse.com/1/classes/Post', params)
+      .then(null, function(res) {
+        console.error(res.data);
+      });
+  };
+
   return {
-    getPosts: getPosts
+    getPosts: getPosts,
+    createPost: createPost
   };
 });

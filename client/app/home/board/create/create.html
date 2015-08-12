@@ -1,0 +1,18 @@
+<form ng-init="disable=true">
+  <h2>Create a post</h2>
+
+  <div>
+  <label>Upload a photo
+    <input type="file" ngf-select ng-model="file" accept="image/*">
+  </label>
+  </div>
+
+  <div>
+  <label>Enter a message<br/>
+    <textarea class="text-box" rows="5" cols="60" ng-model="text" placeholder="Type a message"></textarea>
+  </label>
+  </div>
+
+  <button ng-click="cancel()">Cancel</button>
+  <button ng-click="create()" ng-disabled="disable && !text">Create</button>
+</form>
