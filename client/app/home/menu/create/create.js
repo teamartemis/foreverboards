@@ -1,5 +1,5 @@
 angular.module('artemis.menu.create', ['ngFileUpload'])
-.controller('CreateController', function($scope, $state, $window, Boards, Upload) {
+.controller('CreateBoardController', function($scope, $state, $window, Boards, Upload) {
   $scope.invite = function() {
     console.log('Invite UI');
     // TODO: some way to invite users via email or fb

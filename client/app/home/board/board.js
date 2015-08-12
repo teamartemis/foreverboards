@@ -1,10 +1,15 @@
 angular.module('artemis.board', [
+  'artemis.board.create'
 ])
 
 .controller('BoardController', function($scope, $stateParams, $state, Boards, Posts) {
   $scope.boardId = $stateParams.id;
   $scope.$stateParams = $stateParams;
   $scope.$state = $state;
+
+  $scope.create = function() {
+    $state.go('home.board.create');
+  };
 
   $scope.getBoard = function() {
     Boards.getBoard($scope.boardId).then(function(board) {
@@ -16,6 +21,10 @@ angular.module('artemis.board', [
     Posts.getPosts($scope.boardId).then(function(posts) {
       $scope.posts = posts;
     });
+  };
+
+  $scope.isState = function(name) {
+    return $state.current.name === name;
   };
 
   $scope.getBoard();

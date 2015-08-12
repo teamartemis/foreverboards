@@ -1,5 +1,11 @@
-<h2>state params:</h2>
-<pre>{{ $stateParams | json }}</pre>
-<pre>{{ posts | json }}</pre>
+<!-- testing -->
+<!-- <h2>state params:</h2> -->
+<!-- <pre>{{ $stateParams | json }}</pre> -->
+<!-- <pre>{{ posts | json }}</pre> -->
+
+<h1>{{ board.deceasedName }}</h1>
+
+<button ng-click="create()" ng-show="isState('home.board')">Create new post</button>
+<div ui-view></div>
 
 <post source="post" ng-repeat="post in posts | orderBy: '-createdAt'"></post>
