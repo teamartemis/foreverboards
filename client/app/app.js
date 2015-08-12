@@ -1,6 +1,7 @@
 angular.module('artemis', [
   'artemis.auth',
   'artemis.home',
+  'artemis.board',
   'artemis.services',
   'ui.router'
 ])
@@ -29,8 +30,21 @@ angular.module('artemis', [
     })
     .state('home.board.create', {
       url: '/create',
-      templateUrl: 'app/home/board/create/create.html',
-      controller: 'CreatePostController'
+      views: {
+        'create': {
+          templateUrl: 'app/home/board/create/create.html',
+          controller: 'CreatePostController'
+        }
+      }
+    })
+    .state('home.board.invite', {
+      url: '/invite',
+      views: {
+        'invite': {
+          templateUrl: 'app/home/board/invite/invite.html',
+          controller: 'InviteController'
+        }
+      }
     })
     .state('auth', {
       url: '/auth',

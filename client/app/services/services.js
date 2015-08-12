@@ -28,6 +28,26 @@ angular.module('artemis.services', ['ngCookies'])
     return $cookies.get('sessionToken');
   };
 
+  var getUserIdFromEmail = function(email) {
+    var req = {
+      method: 'GET',
+      url: 'https://api.parse.com/1/classes/_User',
+      params: {
+        where: {
+          email: email
+        }
+      }
+    };
+
+    return $http(req)
+      .then(function(res) {
+        return res.data.results[0].objectId;
+      },
+      function(res) {
+        console.error(res.data);
+      });
+  };
+
   var signout = function() {
     // remove anything that should be removed from local storage
     var token = $cookies.get('sessionToken');
@@ -56,16 +76,24 @@ angular.module('artemis.services', ['ngCookies'])
     signup: signup,
     isAuth: isAuth,
     signout: signout,
+    getUserIdFromEmail: getUserIdFromEmail,
     getSessionToken: getSessionToken
   };
 })
 
 .factory('Boards', function($http) {
   var getBoard = function(id) {
-    return $http.get('https://api.parse.com/1/classes/Board', {where: {objectId: id}})
+    return $http.get('https://api.parse.com/1/classes/Board', {
+      params: {
+        where: {
+          objectId: id
+        }
+      }
+    })
       .then(function(res) {
-        return res.data.results;
-      }, function(res) {
+        return res.data.results[0];
+      },
+      function(res) {
         console.error(res.data);
       });
   };
@@ -83,9 +111,30 @@ angular.module('artemis.services', ['ngCookies'])
     return $http(req)
       .then(function(res) {
         return res.data.results;
-      }, function(res) {
+      },
+      function(res) {
         console.error(res.data);
       });
+  };
+
+  var addToACL = function(userId, boardId, token, currentACL) {
+    currentACL[userId] = {
+      read: true,
+      write: true
+    };
+    var req = {
+      method: 'PUT',
+      url: 'https://api.parse.com/1/classes/Board/' + boardId,
+      headers: {
+        'X-Parse-Session-Token': token
+      },
+      data: {
+        'ACL': currentACL
+      }
+    };
+
+    return $http(req)
+      .then(null);
   };
 
   var createBoard = function(data) {
@@ -104,6 +153,7 @@ angular.module('artemis.services', ['ngCookies'])
   return {
     getBoard: getBoard,
     getBoards: getBoards,
+    addToACL: addToACL,
     createBoard: createBoard,
     checkAccess: checkAccess
   };
