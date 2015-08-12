@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Artemis</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
   </head>
   <body>
-    <div ui-view></div>
+    <div ui-view class="main-container {{ background }}"></div>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
