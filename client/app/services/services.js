@@ -6,18 +6,18 @@ angular.module('artemis.services', ['ngCookies'])
       .then(function(res) {
         $cookies.put('sessionToken', res.data.sessionToken);
         $cookies.put('userId', res.data.objectId);
-      }, function(res) {
+      },
+      function(res) {
         console.error(res.data);
       });
   };
 
   var signup = function(user) {
     return $http.post('https://api.parse.com/1/classes/_User', user)
-    .then(function(res) {
-      //success
-    }, function(res) {
-      console.error(res.data);
-    });
+      //first arg is success function callback
+      .then(null, function(res) {
+        console.error(res.data);
+      });
   };
 
   var isAuth = function() {
@@ -43,10 +43,8 @@ angular.module('artemis.services', ['ngCookies'])
     };
 
     return $http(req)
-      .then(function(res) {
-        //success
-        console.log(res);
-      }, function(res) {
+      //first arg is success function callback
+      .then(null, function(res) {
         console.error(res.data);
       });
 
@@ -92,9 +90,8 @@ angular.module('artemis.services', ['ngCookies'])
 
   var createBoard = function(data) {
     return $http.post('https://api.parse.com/1/classes/Board', data)
-    .then(function(res) {
-
-    }, function(res) {
+      //first arg is success function callback
+      .then(null, function(res) {
         console.error(res.data);
       });
   };
