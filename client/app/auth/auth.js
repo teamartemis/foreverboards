@@ -4,5 +4,5 @@ angular.module('artemis.auth', [
 ])
 
 .controller('AuthController', function($scope, $window) {
-
+  $scope.background = 'auth-bg';
 });

@@ -17,3 +17,71 @@
   display: inline-block;
   margin: 20px;
 }
+
+.main-container {
+  /* Force the main view to take up the entire screen */
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+/* The -bg classes, when set to $scope.background, dynamically set the background image */
+.auth-bg {
+  background: url(../assets/family_istock.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+/* Signin/signout Styling */
+.page-title-container {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 4em;
+}
+
+.auth-form {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: rgba(224,224,224,0.95);
+  border-radius: 20px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-inputs {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.submit-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.signup-button-container {
+  text-align: center;
+}
+
+.signup-link {
+  text-decoration: none;
+  color: black;
+}
+
+.signup-link:hover {
+  text-decoration: none;
+  color: green;
+}
