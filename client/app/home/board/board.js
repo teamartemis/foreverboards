@@ -1,5 +1,6 @@
 angular.module('artemis.board', [
-  'artemis.board.create'
+  'artemis.board.create',
+  'artemis.board.invite'
 ])
 
 .controller('BoardController', function($scope, $stateParams, $state, Boards, Posts) {
@@ -7,8 +8,13 @@ angular.module('artemis.board', [
   $scope.$stateParams = $stateParams;
   $scope.$state = $state;
 
+
   $scope.create = function() {
     $state.go('home.board.create');
+  };
+
+  $scope.invite = function() {
+    $state.go('home.board.invite');
   };
 
   $scope.getBoard = function() {

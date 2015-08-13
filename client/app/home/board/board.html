@@ -1,11 +1,13 @@
 <!-- testing -->
 <!-- <h2>state params:</h2> -->
+<button ng-click="invite()">Invite</button>
+<div ui-view="invite"></div>
 <!-- <pre>{{ $stateParams | json }}</pre> -->
 <!-- <pre>{{ posts | json }}</pre> -->
 
 <h1>{{ board.deceasedName }}</h1>
 
-<button ng-click="create()" ng-show="isState('home.board')">Create new post</button>
-<div ui-view></div>
+<button ng-click="create()" ng-show="!isState('home.board.create')">Create new post</button>
+<div ui-view="create"></div>
 
 <post source="post" ng-repeat="post in posts | orderBy: '-createdAt'"></post>
