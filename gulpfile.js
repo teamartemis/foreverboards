@@ -52,7 +52,12 @@ gulp.task('build:indexHtml', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build:all', ['build:css', 'build:js', 'build:templates', 'build:indexHtml']);
+gulp.task('build:assets', function() {
+  return gulp.src('client/assets/**/*')
+    .pipe(gulp.dest('dist/assets/'));
+});
+
+gulp.task('build:all', ['build:css', 'build:js', 'build:templates', 'build:indexHtml', 'build:assets']);
 
 gulp.task('build', ['bower'], function() {
   return gulp.start('build:all');
