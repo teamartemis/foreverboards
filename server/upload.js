@@ -6,7 +6,7 @@ var storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: function(req, file, cb) {
-    var ext = file.originalname.match(/^(.*)(\.[^.]*)$/)[1];
+    var ext = file.originalname.match(/^(.*)(\.[^.]*)$/)[2];
     var name = 'ffffffffffffffffffffffffffffffff'.split('').map(function() {
       return Math.floor(Math.random() * 0xf).toString(16);
     }).join('');
