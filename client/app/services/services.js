@@ -13,6 +13,9 @@ angular.module('artemis.services', ['ngCookies'])
   };
 
   var signup = function(user) {
+    /*user.ACL = {
+      '*': {}
+    };*/
     return $http.post('https://api.parse.com/1/classes/_User', user)
       //first arg is success function callback
       .then(null, function(res) {
@@ -49,26 +52,14 @@ angular.module('artemis.services', ['ngCookies'])
   };
 
   var signout = function() {
-    // remove anything that should be removed from local storage
-    var token = $cookies.get('sessionToken');
-    $cookies.remove('sessionToken');
-    $cookies.remove('userId');
-
-    var req = {
-      method: 'POST',
-      url: 'https://api.parse.com/1/logout',
-      headers: {
-        'X-Parse-Session-Token': token
-      }
-    };
-
-    return $http(req)
-      //first arg is success function callback
-      .then(null, function(res) {
+    return $http.post('https://api.parse.com/1/logout')
+      .then(function() {
+        // remove anything that should be removed from local storage
+        $cookies.remove('sessionToken');
+        $cookies.remove('userId');
+      }, function(res) {
         console.error(res.data);
       });
-
-
   };
 
   return {
@@ -81,63 +72,30 @@ angular.module('artemis.services', ['ngCookies'])
   };
 })
 
-.factory('Boards', function($http) {
+.factory('Boards', function($http, $cookies) {
   var getBoard = function(id) {
-    return $http.get('https://api.parse.com/1/classes/Board', {
-      params: {
-        where: {
-          objectId: id
-        }
-      }
-    })
-      .then(function(res) {
-        return res.data.results[0];
-      },
-      function(res) {
+    return $http.get('https://api.parse.com/1/classes/Board/' + id)
+      .then(null, function(res) {
         console.error(res.data);
       });
   };
 
-  var getBoards = function(token, user) {
-    // user = { username, password }
-    // TODO: get boards that are owned/administered by the user
-    var req = {
-      method: 'GET',
-      url: 'https://api.parse.com/1/classes/Board',
-      headers: {
-        'X-Parse-Session-Token': token
-      }
-    };
-    return $http(req)
+  var getBoards = function() {
+    return $http.get('https://api.parse.com/1/classes/Board')
       .then(function(res) {
         return res.data.results;
-      },
-      function(res) {
+      }, function(res) {
         console.error(res.data);
       });
   };
 
-  var addToACL = function(userId, boardId, token, currentACL) {
-    currentACL[userId] = {
-      read: true,
-      write: true
-    };
-    var req = {
-      method: 'PUT',
-      url: 'https://api.parse.com/1/classes/Board/' + boardId,
-      headers: {
-        'X-Parse-Session-Token': token
-      },
-      data: {
-        'ACL': currentACL
-      }
-    };
-
-    return $http(req)
-      .then(null);
+  var updateBoard = function(boardId, data) {
+    return $http.put('https://api.parse.com/1/classes/Board/' + boardId, data);
   };
 
   var createBoard = function(data) {
+    data.ACL = {'*': {}};
+    data.ACL[$cookies.get('userId')] = {read: true, write: true};
     return $http.post('https://api.parse.com/1/classes/Board', data)
       //first arg is success function callback
       .then(null, function(res) {
@@ -145,17 +103,11 @@ angular.module('artemis.services', ['ngCookies'])
       });
   };
 
-  var checkAccess = function(user, board) {
-    // return a promise that resolves into a boolean
-    // indicating whether or not the user has access to the board
-  };
-
   return {
     getBoard: getBoard,
     getBoards: getBoards,
-    addToACL: addToACL,
-    createBoard: createBoard,
-    checkAccess: checkAccess
+    updateBoard: updateBoard,
+    createBoard: createBoard
   };
 })
 

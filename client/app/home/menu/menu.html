@@ -3,7 +3,7 @@
 
 <div class="container">
   <div ui-sref="home.board({id: board.objectId})" class="board" ng-repeat="board in boards | orderBy:'-createdAt'">
-    <img src="{{ board.photo }}"/>
+    <img ng-src="{{ board.photo }}"/>
     <span class="title">{{ board.deceasedName }}</span>
   </div>
 </div>

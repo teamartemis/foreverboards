@@ -24,8 +24,10 @@ angular.module('artemis.menu.create', ['ngFileUpload'])
     $state.go('^');
   };
 
-  $scope.$watch('file', function(file) {
-    $scope.upload($scope.file);
+  $scope.$watch('file', function() {
+    if ($scope.file) {
+      $scope.upload($scope.file);
+    }
   });
 
   $scope.upload = function(file) {

@@ -64,20 +64,12 @@ angular.module('artemis', [
 
   $httpProvider.interceptors.push('AllowCORS');
 })
-.factory('AllowCORS', function($window) {
-  // this is an $httpInterceptor
-  // its job is to stop all out going request
-  // then look in local storage and find the user's token
-  // then add it to the header so the server can validate the request
+.factory('AllowCORS', function($window, $cookies) {
   var attach = {
     request: function(object) {
-      // var jwt = $window.localStorage.getItem('com.shortly');
-      // if (jwt) {
-      //   object.headers['x-access-token'] = jwt;
-      // }
-      //object.headers['Allow-Control-Allow-Origin'] = '*';
       object.headers['X-Parse-Application-Id'] = '9oSMpCeMJYGTeXIxmfYwxgQR7EKS47Q7Ayuv0vwb';
       object.headers['X-Parse-REST-API-Key'] = 'Ejpf8BZDwyiT0Hg902yZ8cffJimRJ6VhQAmC6sCh';
+      object.headers['X-Parse-Session-Token'] = $cookies.get('sessionToken');
       return object;
     }
   };
