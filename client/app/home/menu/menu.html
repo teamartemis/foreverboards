@@ -1,9 +1,28 @@
-<button ng-click="create()" ng-show="isState('home.menu')">Create new board</button>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">ForeverBoard</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="" ng-click="create()">Create</a></li>
+        <li><a href="" ng-click="signout()">Signout</a></li>
+      </ul>
+  <!--<button ng-click="create()" ng-show="isState('home.menu')">Create new board</button>
+  <button ng-click="signout()">sign out</button>-->
+</nav>
 <div ui-view></div>
 
-<div class="container">
-  <div ui-sref="home.board({id: board.objectId})" class="board" ng-repeat="board in boards | orderBy:'-createdAt'">
-    <img ng-src="{{ board.photo }}"/>
+<div class="container board-view">
+  <div ui-sref="home.board({id: board.objectId})" class="board col-md-4" ng-repeat="board in boards | orderBy:'-createdAt'">
     <span class="title">{{ board.deceasedName }}</span>
+    <img ng-src="{{ board.photo }}"/>
   </div>
 </div>
