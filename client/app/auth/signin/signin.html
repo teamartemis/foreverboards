@@ -9,6 +9,9 @@
     <div class="form-group">
       <input type="password" placeholder="Password" ng-model="password" class="form-control">
     </div>
+    <div ng-show="error">
+        <p ng-bind="error"></p>
+    </div>
   </div>
   <div class="submit-container">
     <button type="submit" class="btn btn-success submit">Sign in</button>

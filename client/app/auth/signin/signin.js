@@ -8,6 +8,8 @@ angular.module('artemis.auth.signin', [])
     })
     .then(function() {
       $state.go('home.menu');
+    }, function(error) {
+      $scope.error = error;
     });
   };
 });
