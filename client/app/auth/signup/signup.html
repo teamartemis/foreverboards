@@ -1,7 +1,22 @@
-<h2>Sign up</h2>
-<form ng-submit="signup()">
-  <input type="text" placeholder="Username" ng-model="username">
-  <input type="text" placeholder="Email" ng-model="email">
-  <input type="password" placeholder="Password" ng-model="password">
-  <button>Sign up</button>
+<form ng-submit="signup()" class="auth-form">
+  <div class="form-title">
+    <h2 class="title">Sign up</h2>
+  </div>
+  <div class="form-inputs">
+    <div class="form-group">
+      <input type="text" placeholder="Username" ng-model="username" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="email" placeholder="Email" ng-model="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="Password" ng-model="password" class="form-control">
+    </div>
+  </div>
+  <div class="submit-container">
+    <button type="submit" class="btn btn-success submit">Sign up</button>
+  </div>
+  <div class="signup-button-container">
+    <a ui-sref="auth.signin" class="signup-link"><p>Already have an account?</p></a>
+  </div>
 </form>
