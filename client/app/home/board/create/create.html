@@ -1,18 +1,19 @@
-<form ng-init="disable=true">
-  <h2>Create a post</h2>
-
-  <div>
+<form class="modal-window">
+  <h1 class="heading">Create New Post</h1>
+  <section>
   <label>Upload a photo
     <input type="file" ngf-select ng-model="file" accept="image/*">
   </label>
-  </div>
+  </section>
 
-  <div>
+  <section>
   <label>Enter a message<br/>
     <textarea class="text-box" rows="5" cols="60" ng-model="text" placeholder="Type a message"></textarea>
   </label>
-  </div>
+  </section>
 
-  <button ng-click="cancel()">Cancel</button>
-  <button ng-click="create()" ng-disabled="disable && !text">Create</button>
+  <footer>
+    <button ng-click="create()" ng-disabled="disable || !text">Create</button>
+    <button ng-click="cancel()">Cancel</button>
+  </footer>
 </form>

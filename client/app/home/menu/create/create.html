@@ -1,11 +1,19 @@
-<form ng-init="disable=true">
+<form class="modal-window">
+  <h1 class="heading">Create New Board</h1>
+  <section>
   <label>Name of deceased
     <input type="text" ng-model="deceasedName" placeholder="name">
   </label>
+  </section>
+
+  <section>
   <label>Upload headshot
     <input type="file" ngf-select ng-model="file" accept="image/*">
   </label>
-  <button ng-click="invite()">Invite</button>
-  <button ng-click="cancel()">Cancel</button>
-  <button ng-click="create()" ng-disabled="disable">Create</button>
+  </section>
+
+  <footer>
+    <button ng-click="create()" ng-disabled="disable || !deceasedName">Create</button>
+    <button ng-click="cancel()">Cancel</button>
+  </footer>
 </form>

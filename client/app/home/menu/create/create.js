@@ -1,9 +1,6 @@
 angular.module('artemis.menu.create', ['ngFileUpload'])
-.controller('CreateBoardController', function($scope, $state, $window, Boards, Upload) {
-  $scope.invite = function() {
-    console.log('Invite UI');
-    // TODO: some way to invite users via email or fb
-  };
+.controller('CreateBoardController', function($scope, $state, $modalInstance, Boards, Upload) {
+  $scope.disable = true;
 
   $scope.create = function() {
     if (!$scope.deceasedName) {
@@ -15,13 +12,12 @@ angular.module('artemis.menu.create', ['ngFileUpload'])
       deceasedName: $scope.deceasedName,
       photo: $scope.photo
     };
-    Boards.createBoard(params).then(function(res) {
-      $state.go('home.board', {id: res.data.objectId});
-    });
+    $modalInstance.close(params);
   };
 
   $scope.cancel = function() {
-    $state.go('^');
+    // $state.go('^');
+    $modalInstance.dismiss('cancel');
   };
 
   $scope.$watch('file', function() {

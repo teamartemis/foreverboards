@@ -105,3 +105,34 @@ button[disabled] {
   color: grey;
   background-color: #DDD;
 }
+
+/* modal windows */
+.modal-window {
+  margin: 20px;
+  padding: 10px;
+}
+
+.modal-window .heading {
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.modal-window section {
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+
+.modal-window button {
+  background-color: white;
+  text-align: center;
+  width: 80px;
+  margin: 0 15px;
+  border: 1px solid #aaa;
+  padding: 6px 0;
+  border-radius: 5px;
+}
+
+.modal-window footer {
+  text-align: center;
+}
+
