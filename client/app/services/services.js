@@ -1,14 +1,13 @@
 angular.module('artemis.services', ['ngCookies'])
 
-.factory('Users', function($http, $cookies) {
+.factory('Users', function($http, $cookies, $q) {
   var signin = function(user) {
     return $http.get('https://api.parse.com/1/login', {params: user})
       .then(function(res) {
         $cookies.put('sessionToken', res.data.sessionToken);
         $cookies.put('userId', res.data.objectId);
-      },
-      function(res) {
-        console.error(res.data);
+      }, function(err) {
+        return $q.reject('Username and password don\'t match.');
       });
   };
 
