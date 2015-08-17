@@ -7,7 +7,9 @@
     "angular-cookies": "~1.4.3",
     "ng-file-upload": "~6.0.4",
     "bootstrap": "~3.3.5",
-    "angular-bootstrap": "~0.13.3"
+    "angular-bootstrap": "~0.13.3",
+    "angular-deckgrid": "~0.5.0",
+    "angular-timeago": "~0.2.0"
   },
   "ignore": [
     "**/.*",

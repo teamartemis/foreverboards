@@ -1,6 +1,8 @@
 <div class="post">
-  <div class="username">{{ source.username }}</div>
-  <div class="timestamp">{{ source.createdAt }}</div>
-  <img class="photo" ng-src="{{ source.photo }}"/>
-  <div class="content">{{ source.content }}</div>
+  <img class="photo" ng-src="{{ card.photo }}"/>
+  <div class="content">{{ card.content }}</div>
+  <div class="post-footer">
+    <div class="username"><h5>{{ card.userId.username }}</h5></div>
+    <div class="timestamp"><h6>{{ card.createdAt | timeAgo }}</h6></div>
+  </div>
 </div>

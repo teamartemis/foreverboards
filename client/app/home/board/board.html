@@ -1,8 +1,28 @@
-<h1>{{ board.deceasedName }}</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home.menu">ForeverBoard</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="" ng-click="create()">Create Post</a></li>
+        <li><a href="" ng-click="invite()">Invite to Board</a></li>
+        <li><a href="" ng-click="signout()">Signout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<button ng-click="invite()">Invite guests</button>
-<button ng-click="create()">Create new post</button>
-
-<div class="post-container">
-  <post source="post" ng-repeat="post in posts | orderBy: '-createdAt'"></post>
+<div class="deceased-info">
+  <img class="deceased-photo" src="{{ board.photo }}" />
+  <h1 class="deceased-name">{{ board.deceasedName }}</h1>
 </div>
+
+<div deckgrid source="posts" cardTemplate="app/home/board/post.html" class="deckgrid"></div>
