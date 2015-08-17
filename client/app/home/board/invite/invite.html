@@ -1,7 +1,14 @@
-<form ng-init="disable=true">
+<form class="modal-window">
+  <h1 class="heading">Invite Guests</h1>
+
+  <section>
   <label>Insert email of the person you would like to invite:
     <input type="text" ng-model="invitee" placeholder="Email address">
   </label>
-  <button ng-click="submit()">Submit</button>
-  <button ng-click="cancel()">Cancel</button>
+  </section>
+
+  <footer>
+    <button ng-click="submit()">Submit</button>
+    <button ng-click="cancel()">Cancel</button>
+  </footer>
 </form>

@@ -74,7 +74,9 @@ angular.module('artemis.services', ['ngCookies'])
 .factory('Boards', function($http, $cookies) {
   var getBoard = function(id) {
     return $http.get('https://api.parse.com/1/classes/Board/' + id)
-      .then(null, function(res) {
+      .then(function(res) {
+        return res.data;
+      }, function(res) {
         console.error(res.data);
       });
   };

@@ -1,11 +1,25 @@
 angular.module('artemis.menu', [
   'artemis.menu.create'
 ])
-.controller('MenuController', function($scope, $state, Boards, Users) {
+.controller('MenuController', function($scope, $state, $modal, Boards, Users) {
   $scope.boards = [];
 
   $scope.create = function() {
-    $state.go('home.menu.create');
+    var modalCreate = $modal.open({
+      animation: true,
+      templateUrl: 'app/home/menu/create/create.html',
+      controller: 'CreateBoardController'
+    });
+
+    // result is a promise
+    modalCreate.result.then(function(params) {
+      // when resolved, create board using params
+      Boards.createBoard(params).then(function(res) {
+        $scope.getBoards();
+      });
+    }, function() {
+      console.log('modal dismissed');
+    });
   };
 
   $scope.getBoards = function() {

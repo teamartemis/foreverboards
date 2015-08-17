@@ -3,7 +3,8 @@ angular.module('artemis', [
   'artemis.home',
   'artemis.board',
   'artemis.services',
-  'ui.router'
+  'ui.router',
+  'ui.bootstrap'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise('/menu');
