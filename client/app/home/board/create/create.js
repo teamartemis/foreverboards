@@ -1,24 +1,23 @@
 angular.module('artemis.board.create', ['ngFileUpload'])
-.controller('CreatePostController', function($scope, $state, Posts, Upload) {
+.controller('CreatePostController', function($scope, $modalInstance, Upload) {
+  $scope.disable = false;
+
   $scope.create = function() {
-    if ($scope.photo || $scope.text) {
-      var params = {
-        content: $scope.text,
-        photo: $scope.photo
-      };
-      Posts.createPost($scope.boardId, params).then(function(res) { // boardId is from parent scope
-        $scope.getPosts(); // invokes getPosts of parent controller
-        $state.go('^');
-      });
-    }
+    var params = {
+      content: $scope.text,
+      photo: $scope.photo
+    };
+    $modalInstance.close(params);
   };
 
   $scope.cancel = function() {
-    $state.go('^');
+    $modalInstance.dismiss('cancel');
   };
 
   $scope.$watch('file', function(file) {
-    $scope.upload($scope.file);
+    if (file) {
+      $scope.upload($scope.file);
+    }
   });
 
   $scope.upload = function(file) {
@@ -26,7 +25,8 @@ angular.module('artemis.board.create', ['ngFileUpload'])
     Upload.upload({
       url: '/upload',
       file: file
-    }).success(function(data) {
+    })
+    .success(function(data) {
       $scope.photo = data.url;
       $scope.disable = false;
     });
