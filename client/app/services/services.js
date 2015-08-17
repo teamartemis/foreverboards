@@ -122,7 +122,10 @@ angular.module('artemis.services', ['ngCookies'])
             __type: 'Pointer',
             objectId: boardId
           }
-        }
+        },
+        // userId points to the relevant User in Parse
+        // This will grab the User's data instead of simply a reference
+        include: 'userId'
       }
     })
       .then(function(res) {
