@@ -83,7 +83,7 @@
 
 /* The -bg classes, when set to $scope.background, dynamically set the background image */
 .auth-bg {
-  background: url(../assets/family_istock.png) no-repeat center center fixed;
+  background: url(../assets/flower.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
