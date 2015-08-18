@@ -14,7 +14,7 @@ var pjson = require('./package.json');
 var reload = browserSync.reload;
 
 gulp.task('bower', function() {
-  return bower({cmd: 'update', force: true});
+  return bower({ cmd: 'update'});
 });
 
 gulp.task('build:templates', function() {
