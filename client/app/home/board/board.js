@@ -43,8 +43,9 @@ angular.module('artemis.board', [
       // when resolved, fetch user and board information, and assign ACL
       $q.all([Users.getUserIdFromEmail(email), Boards.getBoard($scope.boardId)])
         .then(function(params) {
+          console.log(params);
           var userId = params[0];
-          var board = params[1].data;
+          var board = params[1];
           if (!board.ACL) {
             return console.log('No ACL. This board is already public');
           }
