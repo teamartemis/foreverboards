@@ -12,7 +12,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="" ng-click="create()">Create Post</a></li>
+        <li><a href="" ng-click="create()">Create New Post</a></li>
         <li><a href="" ng-click="invite()">Invite to Board</a></li>
         <li><a href="" ng-click="signout()">Signout</a></li>
       </ul>
@@ -20,9 +20,11 @@
   </div>
 </nav>
 
-<div class="deceased-info">
-  <img class="deceased-photo" src="{{ board.photo }}" />
-  <h1 class="deceased-name">{{ board.deceasedName }}</h1>
-</div>
+<div class="board-container">
+  <div class="deceased-info">
+    <img class="deceased-photo" src="{{ board.photo }}" />
+    <h1 class="deceased-name">{{ board.deceasedName }}</h1>
+  </div>
 
-<div deckgrid source="posts" cardTemplate="app/home/board/post.html" class="deckgrid"></div>
+  <div deckgrid source="posts" cardTemplate="app/home/board/post.html" class="deckgrid"></div>
+</div>
