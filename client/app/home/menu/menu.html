@@ -22,7 +22,7 @@
 <div ui-view></div>
 
 <div class="container board-view">
-  <div ui-sref="home.board({id: board.objectId})" class="board col-md-4" ng-repeat="board in boards | orderBy:'-createdAt'">
+  <div ui-sref="home.board({id: board.objectId})" class="board col-md-3" ng-repeat="board in boards | orderBy:'-createdAt'">
     <span class="title">{{ board.deceasedName }}</span>
     <div class="photo">
       <img ng-src="{{ board.photo }}"/>
