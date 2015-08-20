@@ -12,4 +12,16 @@ angular.module('artemis.auth.signin', [])
       $scope.error = error;
     });
   };
+
+  $scope.demo = function() {
+    Users.signin({
+      username: 'demo',
+      password: 'demo'
+    })
+    .then(function() {
+      $state.go('home.menu');
+    }, function(error) {
+      $scope.error = error;
+    });
+  };
 });

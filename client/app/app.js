@@ -7,7 +7,10 @@ angular.module('artemis', [
   'ui.bootstrap'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/menu');
+  $urlRouterProvider.otherwise(function($injector) {
+    var $state = $injector.get('$state');
+    $state.go('home.menu');
+  });
 
   $stateProvider
     .state('home', {
