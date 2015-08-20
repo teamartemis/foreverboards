@@ -16,6 +16,7 @@
 .board {
   border: 1px solid #DEDEDE;
   border-radius: 5px;
+  margin: 20px;
 }
 
 .board:hover {
@@ -33,10 +34,10 @@
 
 .board .photo {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  margin: 20px auto 40px auto;
+  margin: 20px auto 20px auto;
   overflow: hidden;
 }
 
